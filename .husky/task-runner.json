@@ -1,0 +1,9 @@
+{
+   "tasks": [
+      {
+         "name": "dotnet-build",
+         "command": "dotnet",
+         "args": [ "build" ]
+      }
+   ]
+}
