@@ -1,0 +1,33 @@
+{
+  "id": "146e52f0-fd32-4814-8e58-8a3c0f4d5eb7",
+  "values": [
+    {
+      "key": "host",
+      "value": "localhost:8080",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlbWFpbEBleGFtcGxlLmxvY2FsIiwianRpIjoiNzc3NTg2MjAtY2RmZi00OTlkLWI2YTAtYjI5NGE2Yjk1MGFmIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJkYjVmNWEwMC0xYzNiLTQ1MDYtOTE3YS02NWJlODJmYTg2MmQiLCJleHAiOjE1Mjk2OTM4MjIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTkxMjQvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1OTEyNC8ifQ.LqPkC33K3nkwEQzlqbqr2lw3FvcoOveENfWhF9rspBg",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "email",
+      "value": "email@example.local",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "password",
+      "value": "Qwerty_0",
+      "type": "text",
+      "enabled": true
+    }
+  ],
+  "name": "My Workspace Globals",
+  "_postman_variable_scope": "globals",
+  "_postman_exported_at": "2018-05-23T19:12:21.026Z",
+  "_postman_exported_using": "Postman/6.1.2"
+}

@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "a142a85b-9a42-46ea-8b75-6ba150818f6a",
+		"name": "WebAPI_Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d42568af-49f6-444f-b235-4dd35ad66be2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Test register\", function () {",
+							"    // Request succeeded or user already exists",
+							"    pm.expect(pm.response.json().succeeded).to.be.false || pm.expect(pm.response.json().errors[0].code).to.eql(\"DuplicateUserName\"); ",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"{{email}}\",\n\t\"Password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/register",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae744a43-4b55-4793-b0f8-6873a58cfe0a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Test Login\", function () { ",
+							"   // Request succeeded",
+							"   pm.expect(pm.response.json().succeeded).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"{{email}}\",\n\t\"Password\": \"{{password}}\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get public data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3ab8d43-105d-42f4-922f-6352ed6d6009",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Try to get public data\", function () {",
+							"    pm.expect(pm.response.json()).to.have.property(\"value\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/public",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"public"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get protected data (unauthorized)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30f80ff1-6262-48b7-895e-c40b1814f022",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Try to get protected data)\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/protected",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"protected"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get protected data (authorized)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3dfbb35-1f44-4c54-9b87-664fb80b8646",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Try to get protected data)\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{host}}/api/protected",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"protected"
+					]
+				},
+				"description": "First, you need to get an access token."
+			},
+			"response": []
+		}
+	]
+}
